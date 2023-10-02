@@ -1,0 +1,131 @@
+openapi: 3.0.3
+info:
+  title: Isla - Token API
+  description: |-
+    Cette API gère les tokens du projet Isla.
+  contact:
+    email: enzo.dardaillon@mines-ales.org
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: token
+    description: Everything about tokens
+  - name: user
+    description: Operations about user
+paths:
+  /token:
+    get:
+      tags:
+        - token
+      summary: Request a token
+      description: It let you know if you have remaining credits
+      operationId: get_token
+      parameters:
+        - name: user_id
+          in: query
+          description: User that own tokens
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '405':
+          description: Invalid input
+      security:
+        - api_key:
+            - read:token
+  /user:
+    post:
+      tags:
+        - user
+      summary: Create user
+      description: Create a user
+      operationId: create_user
+      requestBody:
+        description: Created user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /user/{username}:
+    get:
+      tags:
+        - user
+      summary: Get user by user name
+      description: ''
+      operationId: get_user_by_name
+      parameters:
+        - name: username
+          in: path
+          description: 'The name that needs to be fetched.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+components:
+  schemas:
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: c9914832-aabb-4830-8962-7ed78ca2e97e
+        user_id:
+          type: string
+          format: uuid
+          example: dc92bf38-cce2-4f32-8fe3-b52806f8c352
+        expire_date:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          example: dc92bf38-cce2-4f32-8fe3-b52806f8c352
+        username:
+          type: string
+          example: XxIsla30xX
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '12345'
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
