@@ -1,14 +1,7 @@
 import requests
 import json
 
-
-def appeler_api_meteo(ville):
-    # Logique pour appeler l'API de météo et récupérer les données
-    # ...
-    return 0
-
-
-def appeler_api_chatgpt(question):
+def callChatGPT(question):
     API_ENDPOINT = "https://api.openai.com/v1/chat/completions"
     API_KEY = loadConf()
 
@@ -20,15 +13,6 @@ def appeler_api_chatgpt(question):
     reponse_chatgpt = generate_chat_completion(messages, API_KEY, API_ENDPOINT, model="gpt-3.5-turbo", temperature=1, max_tokens= None)
     return reponse_chatgpt
 
-
-
-def traiter_reponse(reponse):
-    # Logique pour traiter la réponse de l'API (selon le cas)
-    # ...
-    return 0
-
-
-#CHATGPT
 def generate_chat_completion(messages, API_KEY, API_ENDPOINT, model="gpt-3.5-turbo", temperature=1, max_tokens= None):
     headers = {
         "Content-Type": "application/json",
