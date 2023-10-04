@@ -19,6 +19,11 @@ def predict_api(sentence):
 def ask(reponse):
     api = predict_api(reponse)
 
+    # Force l'api chat gpt
+    api = "chatGPT"
+
+    print("api.py/ask --> API {}".format(api))
+
     if api == "meteo":
         return callMeteo(reponse)
     elif api == "chatGPT":
@@ -67,7 +72,7 @@ def callNews(ville):
     return 0
 
 def callChatGPT(question):
-    user_id = '12345'
+    user_id = 'dc92bf38-cce2-4f32-8fe3-b52806f8c352'
     phrase = 'Comment va tu ?'
     action = 'chatGPT'
     return send_api(user_id, phrase, action)

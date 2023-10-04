@@ -43,9 +43,10 @@ def send_api():
 
         if action == 'chatGPT':
             token_data['credits'] -= 1
-            gptAPI.callChatGPT(phrase)
+            response = {'message': f'{gptAPI.callChatGPT(phrase)}'}
+            
 
-        response = {'message': f'Phrase envoyée avec succès. Crédits restants : {token_data["credits"]}'}
+        print(f'Phrase envoyée avec succès. Crédits restants : {token_data["credits"]}')
         return jsonify(response), 200
     
     else:
