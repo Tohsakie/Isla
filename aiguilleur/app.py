@@ -11,7 +11,7 @@ def operate():
     user_id = data.get('user_id')
     sentence = data.get('request')
 
-    if not user_id or not sentence:
+    if check_params(user_id, sentence):
         return jsonify({'error': 'Paramètres user_id et request requis'}), 400
     else:
         base_url = controller_db + "/token/"
@@ -29,3 +29,17 @@ def operate():
 
 if __name__ == '__main__':
     app.run(host='localhost', port=8080)
+
+
+def check_params(user_id, sentence):
+    return not user_id or not sentence
+
+
+def test_check_params():
+    assert check_params('fee18e97-a5c4-4d72-9bbc-24c5d2edd67a', 'Coucou, comment vas-tu ?') == False
+    assert check_params('fee18e97-a5c4-4d72-9bbc-24c5d2edd67a', '') == True
+    assert check_params('', 'Coucou, comment vas-tu ?') == True
+    assert check_params('', '') == True
+    assert check_params(None, None) == True
+    assert check_params(None, 'Coucou, comment vas-tu ?') == True
+    assert check_params('fee18e97-a5c4-4d72-9bbc-24c5d2edd67a', None) == True
