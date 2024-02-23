@@ -33,6 +33,10 @@ jobs:
       run: |
         cd ./choix
         pytest ./app.py
+    - name: Choix - Build the Docker image
+      run:  |
+        cd ./choix
+        docker build . --file Dockerfile --tag ethokia/isla-choix:$(date +%s)
     - name: Aiguilleur - Install dependencies
       run: |
         cd ./aiguilleur
@@ -43,4 +47,7 @@ jobs:
       run: |
         cd ./aiguilleur
         pytest ./app.py
-        
+    - name: Aiguilleur - Build the Docker image
+      run:  |
+        cd ./aiguilleur
+        docker build . --file Dockerfile --tag ethokia/isla-aiguilleur:$(date +%s)
