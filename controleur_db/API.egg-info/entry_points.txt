@@ -1,0 +1,2 @@
+[console_scripts]
+API = API.__main__:main

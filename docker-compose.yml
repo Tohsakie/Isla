@@ -30,7 +30,7 @@ services:
     ports:
       - "8081:8081"
     image: isla_controleur_db
-    command: /bin/sh -c "sleep 3 && python -m ./API"
+    command: /bin/sh -c "sleep 3 && python3 -m API"
     networks:
       isla_network:
         ipv4_address: 172.32.0.4
