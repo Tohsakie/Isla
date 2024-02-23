@@ -9,12 +9,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY . /usr/src/app
 
-EXPOSE 8080
-
-ENTRYPOINT ["gunicorn"]
-
-CMD ["openapi_server.__main__:flask_app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker"]
-
-#ENTRYPOINT ["python3"]
-
-#CMD ["-m", "openapi_server"]
+EXPOSE 8081

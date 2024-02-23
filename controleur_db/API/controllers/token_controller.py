@@ -3,9 +3,9 @@ from typing import Dict
 from typing import Tuple
 from typing import Union
 
-from openapi_server.models.token import Token  # noqa: E501
-from openapi_server import util
-import openapi_server.databases.postgres_connection as db
+from API.models.token import Token  # noqa: E501
+from API import util
+import API.databases.postgres_connection as db
 
 from flask import Response
 

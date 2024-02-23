@@ -2,13 +2,13 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 import psycopg2
 import pandas as pd
-import openapi_server.models.user as user
+import API.models.user as user
 
 config = {
 	"dialect":"postgresql",
 	"driver":"psycopg2",
-	"username":"hessla",
-	"password":"UnPasswordComplexe",
+	"username":"isla",
+	"password":"password",
 	"host":"localhost",
 	"port":"5432",
 	"database":"postgres"

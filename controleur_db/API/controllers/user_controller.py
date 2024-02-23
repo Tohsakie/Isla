@@ -8,9 +8,9 @@ from typing import Union
 
 import json
 
-from openapi_server.models.user import User  # noqa: E501
-from openapi_server import util
-import openapi_server.databases.postgres_connection as db
+from API.models.user import User  # noqa: E501
+from API import util
+import API.databases.postgres_connection as db
 
 
 def create_user(user=None):  # noqa: E501
