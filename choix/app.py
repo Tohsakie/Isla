@@ -60,6 +60,7 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080)
 
 
+# TESTS
 def test_call_weather():
     with pytest.raises(ValueError):
         call_weather(None)
