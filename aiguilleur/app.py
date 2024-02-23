@@ -35,6 +35,7 @@ def check_params(user_id, sentence):
     return not user_id or not sentence
 
 
+# TEST
 def test_check_params():
     assert check_params('fee18e97-a5c4-4d72-9bbc-24c5d2edd67a', 'Coucou, comment vas-tu ?') == False
     assert check_params('fee18e97-a5c4-4d72-9bbc-24c5d2edd67a', '') == True
