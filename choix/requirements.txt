@@ -1,5 +1,6 @@
 urllib3==1.26.7
-flask==2.0.1
+flask==2.2.2
+werkzeug==2.2.2
 tensorflow
 requests==2.26.0
 pytest
