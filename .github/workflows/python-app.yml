@@ -37,6 +37,7 @@ jobs:
       run:  |
         cd ./choix
         docker build . --file Dockerfile --tag ethokia/isla-choix:$(date +%s)
+        docker push ethokia/isla-choix:$(date +%s)
     - name: Aiguilleur - Install dependencies
       run: |
         cd ./aiguilleur
@@ -51,3 +52,4 @@ jobs:
       run:  |
         cd ./aiguilleur
         docker build . --file Dockerfile --tag ethokia/isla-aiguilleur:$(date +%s)
+        docker push ethokia/isla-aiguilleur:$(date +%s)
