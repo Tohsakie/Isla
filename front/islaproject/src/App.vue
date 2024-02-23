@@ -25,7 +25,6 @@ document.body.classList.add("dark");
 
   <MainSection msg="You did it!" />
   
-  <ProductVue />
 
 
 </template>
