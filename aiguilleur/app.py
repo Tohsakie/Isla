@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-controller_db = '0.0.0.0:8080'
-choix = '0.0.0.0:8080'
+controller_db = '172.32.0.4:8081'
+choix = '172.32.0.5:8082'
 
 @app.route('/operate', methods=['POST'])
 def operate():
@@ -33,7 +33,6 @@ if __name__ == '__main__':
 
 def check_params(user_id, sentence):
     return not user_id or not sentence
-
 
 
 def test_check_params():

@@ -14,5 +14,5 @@ gunicorn
 #Flask == 2.1.1
 redis
 sqlalchemy
-psycopg2
+psycopg2-binary
 pandas

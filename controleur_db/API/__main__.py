@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import connexion
-import openapi_server.databases.postgres_connection as db
+import API.databases.postgres_connection as db
 
 def main():
     app = connexion.App(__name__, specification_dir='./openapi/')
@@ -13,7 +13,7 @@ def main():
 
     db.init()
 
-    app.run(port=8000)
+    app.run(port=8081)
 
 
 if __name__ == '__main__':
