@@ -5,6 +5,8 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import numpy as np
 import requests
+import meteo
+import pytest
 
 app = Flask(__name__)
 
@@ -13,8 +15,8 @@ def call_chat_gpt(question):
     return "chatgpt"
 
 
-def call_weather():
-    return "weather"
+def call_weather(city_name='Ales', country_code='fr'):
+    return meteo.extract_weather_info(city_name, country_code)
 
 
 def call_news():
@@ -37,7 +39,7 @@ def ask(question):
     subject = predict_api(question)
 
     if subject == "meteo":
-        return call_weather()
+        return jsonify(call_weather())
     elif subject == "chatGPT":
         return call_chat_gpt(question)
     elif subject == "news":
@@ -56,3 +58,17 @@ def getresponse():
 
 if __name__ == '__main__':
     app.run(host='localhost', port=8080)
+
+
+def test_call_weather():
+    with pytest.raises(ValueError):
+        call_weather(None)
+        call_weather('Ales', None)
+
+    result = call_weather()
+    assert result['weather_main'] != None
+    assert result['weather_description'] != None
+    assert result['weather_icon'] != None
+    assert result['temp_min'] != None
+    assert result['temp_max'] != None
+    assert result['city_name'] != None
