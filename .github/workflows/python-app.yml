@@ -36,7 +36,7 @@ jobs:
     - name: Choix - Build the Docker image
       run:  |
         cd ./choix
-        echo "$DOCKER_PASSWORD" | docker login --usermane "$DOCKER_USERNAME" --password-stdin
+        echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
         docker build . --file Dockerfile --tag ethokia/isla-choix:$(date +'%d%m%y')
         docker push ethokia/isla-choix:$(date +'%d%m%y')
     - name: Aiguilleur - Install dependencies
@@ -52,6 +52,6 @@ jobs:
     - name: Aiguilleur - Build the Docker image
       run:  |
         cd ./aiguilleur
-        echo "$DOCKER_PASSWORD" | docker login --usermane "$DOCKER_USERNAME" --password-stdin
+        echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
         docker build . --file Dockerfile --tag ethokia/isla-aiguilleur:$(date +'%d%m%y')
         docker push ethokia/isla-aiguilleur:$(date +'%d%m%y')
