@@ -37,8 +37,8 @@ jobs:
       run:  |
         cd ./choix
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        echo ${{ secrets.DOCKER_PASSWORD }} | docker build . --file Dockerfile --tag ethokia/isla-choix:$(date +'%d%m%y') --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        echo ${{ secrets.DOCKER_PASSWORD }} | docker push ethokia/isla-choix:$(date +'%d%m%y') --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+        docker build . --file Dockerfile --tag ethokia/isla-choix:$(date +'%d%m%y')
+        docker push ethokia/isla-choix:$(date +'%d%m%y')
     - name: Aiguilleur - Install dependencies
       run: |
         cd ./aiguilleur
@@ -53,5 +53,5 @@ jobs:
       run:  |
         cd ./aiguilleur
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        echo ${{ secrets.DOCKER_PASSWORD }} | docker build . --file Dockerfile --tag ethokia/isla-aiguilleur:$(date +'%d%m%y') --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        echo ${{ secrets.DOCKER_PASSWORD }} | docker push ethokia/isla-aiguilleur:$(date +'%d%m%y') --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+        docker build . --file Dockerfile --tag ethokia/isla-aiguilleur:$(date +'%d%m%y')
+        docker push ethokia/isla-aiguilleur:$(date +'%d%m%y')
