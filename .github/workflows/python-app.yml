@@ -36,9 +36,9 @@ jobs:
     - name: Choix - Build the Docker image
       run:  |
         cd ./choix
-        echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-        echo "$DOCKER_PASSWORD" | docker build . --file Dockerfile --tag ethokia/isla-choix:$(date +'%d%m%y') --username "$DOCKER_USERNAME" --password-stdin
-        echo "$DOCKER_PASSWORD" | docker push ethokia/isla-choix:$(date +'%d%m%y') --username "$DOCKER_USERNAME" --password-stdin
+        echo ${{ DOCKER_USERNAME.DOCKER_PASSWORD }} | docker login --username ${{ DOCKER_USERNAME.DOCKER_USERNAME }} --password-stdin
+        echo ${{ DOCKER_USERNAME.DOCKER_PASSWORD }} | docker build . --file Dockerfile --tag ethokia/isla-choix:$(date +'%d%m%y') --username ${{ DOCKER_USERNAME.DOCKER_USERNAME }} --password-stdin
+        echo ${{ DOCKER_USERNAME.DOCKER_PASSWORD }} | docker push ethokia/isla-choix:$(date +'%d%m%y') --username ${{ DOCKER_USERNAME.DOCKER_USERNAME }} --password-stdin
     - name: Aiguilleur - Install dependencies
       run: |
         cd ./aiguilleur
@@ -52,6 +52,6 @@ jobs:
     - name: Aiguilleur - Build the Docker image
       run:  |
         cd ./aiguilleur
-        echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-        echo "$DOCKER_PASSWORD" | docker build . --file Dockerfile --tag ethokia/isla-aiguilleur:$(date +'%d%m%y') --username "$DOCKER_USERNAME" --password-stdin
-        echo "$DOCKER_PASSWORD" | docker push ethokia/isla-aiguilleur:$(date +'%d%m%y') --username "$DOCKER_USERNAME" --password-stdin
+        echo ${{ DOCKER_USERNAME.DOCKER_PASSWORD }} | docker login --username ${{ DOCKER_USERNAME.DOCKER_USERNAME }} --password-stdin
+        echo ${{ DOCKER_USERNAME.DOCKER_PASSWORD }} | docker build . --file Dockerfile --tag ethokia/isla-aiguilleur:$(date +'%d%m%y') --username ${{ DOCKER_USERNAME.DOCKER_USERNAME }} --password-stdin
+        echo ${{ DOCKER_USERNAME.DOCKER_PASSWORD }} | docker push ethokia/isla-aiguilleur:$(date +'%d%m%y') --username ${{ DOCKER_USERNAME.DOCKER_USERNAME }} --password-stdin
