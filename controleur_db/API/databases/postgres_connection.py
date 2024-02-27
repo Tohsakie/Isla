@@ -9,7 +9,7 @@ config = {
 	"driver":"psycopg2",
 	"username":"isla",
 	"password":"password",
-	"host":"localhost",
+	"host":"172.32.0.2",
 	"port":"5432",
 	"database":"postgres"
 }

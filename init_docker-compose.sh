@@ -28,7 +28,7 @@ echo "Suppression de l'éventuel network docker déjà créé..."
 docker network rm isla_network
 
 echo "Création du network..."
-docker network create --subnet=172.25.0.0/16 isla_network
+docker network create --subnet=172.32.0.0/24 isla_network
 check_failure "Échec de la création du network"
 echo_success "Network créé avec succès"
 

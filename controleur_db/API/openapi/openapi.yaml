@@ -41,7 +41,7 @@ paths:
       summary: Request a token
       tags:
       - token
-      x-openapi-router-controller: openapi_server.controllers.token_controller
+      x-openapi-router-controller: API.controllers.token_controller
     post:
       description: Add token
       operationId: add_token
@@ -65,7 +65,7 @@ paths:
       summary: Add a Token to a User
       tags:
       - token
-      x-openapi-router-controller: openapi_server.controllers.token_controller
+      x-openapi-router-controller: API.controllers.token_controller
   /user:
     post:
       description: Create a user
@@ -86,7 +86,7 @@ paths:
       summary: Create user
       tags:
       - user
-      x-openapi-router-controller: openapi_server.controllers.user_controller
+      x-openapi-router-controller: API.controllers.user_controller
   /user/{username}:
     get:
       description: ""
@@ -114,7 +114,7 @@ paths:
       summary: Get user by user name
       tags:
       - user
-      x-openapi-router-controller: openapi_server.controllers.user_controller
+      x-openapi-router-controller: API.controllers.user_controller
 components:
   schemas:
     Token:
@@ -184,4 +184,4 @@ components:
       in: header
       name: api_key
       type: apiKey
-      x-apikeyInfoFunc: openapi_server.controllers.security_controller.info_from_api_key
+      x-apikeyInfoFunc: API.controllers.security_controller.info_from_api_key

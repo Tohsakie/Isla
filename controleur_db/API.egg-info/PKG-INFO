@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: API
+Version: 1.0.0
+Summary: Isla - Token API
+Home-page: 
+Author-email: enzo.dardaillon@mines-ales.org
+Keywords: OpenAPI,Isla - Token API
+
+    Cette API gère les tokens du projet Isla.
+    
