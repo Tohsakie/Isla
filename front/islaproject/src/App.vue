@@ -1,5 +1,4 @@
 <script setup>
-import MainPage from './components/MainPage.vue'
 import MainSection from './components/MainSection.vue'
 import ProductVue from './components/ProductVue.vue'
 document.body.classList.add("dark");
@@ -16,14 +15,19 @@ document.body.classList.add("dark");
     </div>
   </header> -->
 
-    <div id="back-bg"></div>
+
+
     <div id="back-colors" class="relative flex flex-col h-[100vh] items-center justify-center bg-white dark:bg-black transition-bg">
         <div class="absolute inset-0 overflow-hidden">
             <div class="jumbo absolute -inset-[10px] opacity-50"></div>
         </div>
     </div>
 
-  <MainSection msg="You did it!" />
+    <div id="back-bg">
+      <MainSection />
+    </div>
+
+
   
 
 

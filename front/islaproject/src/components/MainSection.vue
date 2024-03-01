@@ -1,4 +1,11 @@
+<script setup>
+  import Navbar from './Navbar.vue'
+</script>
+
+
 <template>
+
+  <Navbar />
     
     <div class="container">
       <h1> Isla </h1>

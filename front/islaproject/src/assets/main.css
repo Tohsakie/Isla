@@ -17,9 +17,9 @@ a,
 }
 
 @media (hover: hover) {
-  a:hover {
+  /* a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
-  }
+  } */
 }
 
 @media (min-width: 1024px) {
@@ -124,7 +124,6 @@ body {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
     border-radius: 25px;
     margin: 2%;
     backdrop-filter: blur(10px);
