@@ -16,7 +16,7 @@ services:
 
   aiguilleur:
     ports:
-      - "8080:8080"
+      - "8085:8080"
     image: isla_aiguilleur
     command: /bin/sh -c "sleep 3 && python3 app.py"
     networks:

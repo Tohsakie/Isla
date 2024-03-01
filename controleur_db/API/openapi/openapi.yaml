@@ -6,7 +6,7 @@ info:
   title: Isla - Token API
   version: 1.0.0
 servers:
-- url: http://localhost:8080
+- url: http://127.0.0.1:8081
 tags:
 - description: Everything about tokens
   name: token
