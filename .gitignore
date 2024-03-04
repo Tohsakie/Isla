@@ -1,4 +1,5 @@
 conf.json
 abc.mp3
-
+.idea/
 __pycache__
+choix/.env

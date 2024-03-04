@@ -7,12 +7,13 @@ import numpy as np
 import requests
 import meteo
 import pytest
+import gpt
 
 app = Flask(__name__)
 
 
 def call_chat_gpt(question):
-    return "chatgpt"
+    return gpt.appeler_api_chatgpt(question)
 
 
 def call_weather(city_name='Ales', country_code='fr'):
@@ -57,7 +58,7 @@ def getresponse():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8082)
+    app.run(host='0.0.0.0', port=8082)
 
 
 # TESTS
