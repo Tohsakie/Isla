@@ -7,12 +7,13 @@ import numpy as np
 import requests
 import meteo
 import pytest
+import gpt
 
 app = Flask(__name__)
 
 
 def call_chat_gpt(question):
-    return "chatgpt"
+    return gpt.appeler_api_chatgpt(question)
 
 
 def call_weather(city_name='Ales', country_code='fr'):
