@@ -4,16 +4,20 @@ import tts as tts
 import os
 import time
 
+trigger_vocal = "géraldine"
+
 os.system('cls' if os.name == 'nt' else 'clear')
 
-def callback(recognizer, audio):                         
+def callback(recognizer, audio):
     try:
         msg = recognizer.recognize_google(audio, language="fr-FR")
+        print("Écoute OK, Traitement...")
 
-        if "la mère de grégory" in msg.lower():
-            theTexte = msg.lower().split("la mère de grégory ")[-1]
+        if trigger_vocal in msg.lower():
+            theTexte = msg.lower().split(f"{trigger_vocal} ")[-1]
             print(theTexte)
             reponse_chatgpt = api.ask(theTexte)
+            #reponse_chatgpt = "Ceci est un test, voici vos paroles : " + theTexte
 
             print(reponse_chatgpt)
             tts.say(reponse_chatgpt)
@@ -25,6 +29,7 @@ def callback(recognizer, audio):
 def ecoute_background():
     r = sr.Recognizer()
     r.listen_in_background(sr.Microphone(), callback)
+    print("Écoute en cours...")
 
 
 
