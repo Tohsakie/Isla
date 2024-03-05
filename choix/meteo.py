@@ -70,23 +70,6 @@ def create_weather_image(weather_icon_url, file_name):
     final_image.save(f'images/final_{file_name}.png')
 
 
-
-# Example usage:
-result = extract_weather_info('Ales')
-if result:
-    print("Weather Main:", result['weather_main'])
-    print("Weather Description:", result['weather_description'])
-    print("Weather Icon:", result['weather_icon'])
-    print("Temp Min:", result['temp_min'])
-    print("Temp Max:", result['temp_max'])
-    print("City Name:", result['city_name'])
-
-
-# Exemple d'utilisation :
-weather_icon_url = f"https://openweathermap.org/img/wn/{result['weather_icon']}@2x.png"
-create_weather_image(weather_icon_url, result['weather_description'].replace(" ", "_"))
-
-
 def test_extract_weather_info():
     with pytest.raises(ValueError):
         extract_weather_info(None)
