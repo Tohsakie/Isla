@@ -22,16 +22,12 @@ def call_weather(city_name='Ales', country_code='fr'):
     return meteo.extract_weather_info(city_name, country_code)
 
 
-def call_news():
-    return "news"
-
-
 def predict_api(sentence):
     name_file = "isla.h5"
     model = tf.keras.models.load_model(os.path.join(os.path.dirname(__file__), name_file), custom_objects={'Adam': tf.keras.optimizers.Adam})
     tokenizer = Tokenizer()
     max_sequence_length = 14
-    etiquettes = ["meteo", "chatGPT", "news"]
+    etiquettes = ["meteo", "chatGPT"]
     sequence = tokenizer.texts_to_sequences([sentence])
     sequence = pad_sequences(sequence, maxlen=max_sequence_length, padding='post')
     prediction = model.predict(sequence)
@@ -39,7 +35,7 @@ def predict_api(sentence):
     if 0 <= predicted_label_index < len(etiquettes):
         return etiquettes[predicted_label_index]
     else:
-        return "error"
+        return "chatGPT"
 
 
 def ask(question):
@@ -49,8 +45,6 @@ def ask(question):
         return jsonify(call_weather())
     elif subject == "chatGPT":
         return call_chat_gpt(question)
-    elif subject == "news":
-        return call_news()
     else:
         return "Je n'ai pas compris votre demande"
 

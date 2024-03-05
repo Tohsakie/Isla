@@ -35,15 +35,12 @@ def callback(recognizer, audio):
         print("Écoute OK, Traitement...")
 
         if trigger_vocal in msg.lower():
-            theTexte = msg.lower().split(f"{trigger_vocal} ")[-1]
-            print(theTexte)
-            reponse_chatgpt = "Tema la taille de mon zgeg !"
-            reponse_chatgpt = "🥳"
+            user_request = msg.lower().split(f"{trigger_vocal} ")[-1]
 
-            nameFile = emoji_to_name(reponse_chatgpt).replace(":","") + "_3d.png"
-            nameFolder = name_to_folder(emoji_to_name(reponse_chatgpt))
+            name_file = emoji_to_name(reponse_chatgpt).replace(":","") + "_3d.png"
+            name_folder = name_to_folder(emoji_to_name(reponse_chatgpt))
 
-            image_path = os.path.join(os.path.dirname(__file__), "assets", nameFolder, "3D", nameFile)
+            image_path = os.path.join(os.path.dirname(__file__), "assets", name_folder, "3D", name_file)
             print(image_path)
             current_image = pygame.image.load(image_path)
             current_image = pygame.transform.scale(current_image, (image_width, image_height))
