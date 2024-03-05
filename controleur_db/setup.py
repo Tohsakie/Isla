@@ -22,7 +22,7 @@ setup(
     version=VERSION,
     description="Isla - Token API",
     author_email="enzo.dardaillon@mines-ales.org",
-    url="",
+    url="0.0.0.0",
     keywords=["OpenAPI", "Isla - Token API"],
     install_requires=REQUIRES,
     packages=find_packages(),
