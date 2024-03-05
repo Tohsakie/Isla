@@ -10,8 +10,6 @@ COPY meteo.py .
 COPY app.py .
 COPY isla.h5 .
 COPY gpt.py .
-COPY .env .
-
 
 
 EXPOSE 8082
