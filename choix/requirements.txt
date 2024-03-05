@@ -7,3 +7,5 @@ protobuf
 pytest
 numpy
 pillow
+openai
+emoji
