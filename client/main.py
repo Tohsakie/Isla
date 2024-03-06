@@ -14,7 +14,7 @@ screen_width = 1280
 screen_height = 720 
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
 
-image_path = os.path.join(os.path.dirname(__file__), "image.png")
+image_path = os.path.join(os.path.dirname(__file__),"assets", "Studio microphone", "3D", "studio_microphone_3d.png")
 image = pygame.image.load(image_path)
 
 image_width = 300  
@@ -44,7 +44,9 @@ def callback(recognizer, audio):
             if response_chatgpt:
 
                 response_chatgpt = response_chatgpt['response']['response']
-                contenu_entre_crochets = re.findall(r'\[(.*?)\]', response_chatgpt)
+                contenu_entre_crochets, sentence = separate_content(response_chatgpt)
+
+                #contenu_entre_crochets = re.findall(r'\[(.*?)\]', emoji)
 
                 if contenu_entre_crochets:
                     emoji = contenu_entre_crochets[0]
@@ -71,7 +73,7 @@ def callback(recognizer, audio):
                 current_image = pygame.transform.scale(current_image, (image_width, image_height))
                 
                 print(response_chatgpt)
-                tts.say(response_chatgpt)
+                tts.say(sentence)
                 pass
 
     except (LookupError, sr.UnknownValueError):
@@ -91,6 +93,13 @@ def emoji_to_name(emoji_char):
     except Exception as e:
         print("Une erreur s'est produite lors de la conversion de l'emoji en nom :", e)
         return None
+    
+def separate_content(text):
+    pattern = r'\[(.*?)\]'
+    matches = re.findall(pattern, text)
+    for match in matches:
+        text = text.replace('[' + match + ']', '')
+    return matches, text
 
 def name_to_folder(emoji_name):
     try:

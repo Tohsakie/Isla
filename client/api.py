@@ -1,14 +1,15 @@
 import requests
 import json
+import os
 
-ca_cert = './certs/RootCA.pem'
-client_cert = './certs/client01-chain.pem'
-client_key = './certs/client01.key'
+ca_cert = os.path.join(os.path.dirname(__file__), "certs", "RootCA.pem")
+client_cert = os.path.join(os.path.dirname(__file__), "certs", "client01-chain.pem")
+client_key = os.path.join(os.path.dirname(__file__), "certs", "client01.key")
 
 client_tls = (client_cert, client_key)
 
 def ask(question, user_id):
-    url = 'http://159.31.69.199:8085/operate'
+    url = 'https://server.isla.ai:8085/operate'
     payload = json.dumps({
         'user_id': user_id,
         'request': question
