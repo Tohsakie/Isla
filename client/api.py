@@ -19,4 +19,4 @@ def ask(question, user_id):
         return None
 
 
-print(ask("Quel temps fait-il à Paris ?", "fee18e97-a5c4-4d72-9bbc-24c5d2edd67a"))
+# print(ask("Quel temps fait-il à Paris ?", "fee18e97-a5c4-4d72-9bbc-24c5d2edd67a"))

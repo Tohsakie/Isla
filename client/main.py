@@ -57,7 +57,17 @@ def callback(recognizer, audio):
 
                 image_path = os.path.join(os.path.dirname(__file__), "assets", name_folder, "3D", name_file)
                 print(image_path)
-                current_image = pygame.image.load(image_path)
+
+                try:
+                    current_image = pygame.image.load(image_path)
+                except FileNotFoundError:
+                    print("(!) Fichier introuvable")
+                    emoji = "❓"
+                    name_file = emoji_to_name(emoji).replace(":","") + "_3d.png"
+                    name_folder = name_to_folder(emoji_to_name(emoji))
+                    image_path = os.path.join(os.path.dirname(__file__), "assets", name_folder, "3D", name_file)
+                    current_image = pygame.image.load(image_path)
+
                 current_image = pygame.transform.scale(current_image, (image_width, image_height))
                 
                 print(response_chatgpt)
@@ -66,6 +76,8 @@ def callback(recognizer, audio):
 
     except (LookupError, sr.UnknownValueError):
         print("(!) Erreur de compréhension")
+
+
 
 def ecoute_background():
     r = sr.Recognizer()

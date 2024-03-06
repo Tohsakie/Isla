@@ -1,7 +1,6 @@
 from playsound import playsound
 from gtts import gTTS
 import os
-from io import BytesIO
 
 def say(text):
     text = text
