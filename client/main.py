@@ -5,6 +5,8 @@ import time
 import emoji
 import pygame
 from threading import Thread
+import api
+import re
 
 pygame.init()
 
@@ -19,7 +21,7 @@ image_width = 300
 image_height = 300 
 image = pygame.transform.scale(image, (image_width, image_height))
 
-imagePosition = [[150,350], [450,100], [800,350]]
+imagePosition = [[50,350], [450,0], [900,350]]
 
 trigger_vocal = "géraldine"
 
@@ -37,19 +39,32 @@ def callback(recognizer, audio):
         if trigger_vocal in msg.lower():
             user_request = msg.lower().split(f"{trigger_vocal} ")[-1]
 
-            name_file = emoji_to_name(reponse_chatgpt).replace(":","") + "_3d.png"
-            name_folder = name_to_folder(emoji_to_name(reponse_chatgpt))
+            response_chatgpt = api.ask(user_request, "fee18e97-a5c4-4d72-9bbc-24c5d2edd67a")
 
-            image_path = os.path.join(os.path.dirname(__file__), "assets", name_folder, "3D", name_file)
-            print(image_path)
-            current_image = pygame.image.load(image_path)
-            current_image = pygame.transform.scale(current_image, (image_width, image_height))
-            
-            print(reponse_chatgpt)
-            tts.say(reponse_chatgpt)
-            pass
+            if response_chatgpt:
 
-    except LookupError:
+                response_chatgpt = response_chatgpt['response']['response']
+                contenu_entre_crochets = re.findall(r'\[(.*?)\]', response_chatgpt)
+
+                if contenu_entre_crochets:
+                    emoji = contenu_entre_crochets[0]
+                else:
+                    emoji = "❓"
+                emoji = emoji_to_name(emoji)
+
+                name_file = emoji_to_name(emoji).replace(":","") + "_3d.png"
+                name_folder = name_to_folder(emoji_to_name(emoji))
+
+                image_path = os.path.join(os.path.dirname(__file__), "assets", name_folder, "3D", name_file)
+                print(image_path)
+                current_image = pygame.image.load(image_path)
+                current_image = pygame.transform.scale(current_image, (image_width, image_height))
+                
+                print(response_chatgpt)
+                tts.say(response_chatgpt)
+                pass
+
+    except (LookupError, sr.UnknownValueError):
         print("(!) Erreur de compréhension")
 
 def ecoute_background():
