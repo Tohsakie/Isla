@@ -2,12 +2,17 @@ import json
 
 from flask import Flask, request, jsonify
 import requests
+import ssl
 
 app = Flask(__name__)
 
 controller_db = 'http://172.32.0.4:8081'
 choix = 'http://172.32.0.5:8082'
 
+app_key = './certs/server.isla.ai.key'
+app_key_password = None
+app_cert = './certs/server.isla.ai-chain.pem'
+ca_cert = './certs/RootCA.pem'
 
 def check_params(user_id, sentence):
     return not user_id or not sentence
@@ -64,4 +69,7 @@ def operate():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    ssl_context = ssl.create_default_context(certfile=app_cert, keyfile=app_key, password=app_key_password)
+    ssl_context.verify_mode = ssl.CERT_REQUIRED
+
+    app.run(host='0.0.0.0', port=8080, ssl_context=ssl_context)

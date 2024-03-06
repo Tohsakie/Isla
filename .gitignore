@@ -3,3 +3,5 @@ abc.mp3
 .idea/
 __pycache__
 choix/.env
+aiguilleur/certs/*
+client/certs/*
